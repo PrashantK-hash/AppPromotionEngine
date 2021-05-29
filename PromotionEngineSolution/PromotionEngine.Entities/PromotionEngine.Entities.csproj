@@ -41,10 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PromotionCondition.cs" />
+    <Compile Include="PromotionDetails.cs" />
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingCartItem.cs" />
     <Compile Include="SKU.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PromotionEngine.Common\PromotionEngine.Common.csproj">
+      <Project>{B45E58BB-AA91-4889-A11E-149C7E3A5E6C}</Project>
+      <Name>PromotionEngine.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

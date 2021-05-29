@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +50,17 @@
   <ItemGroup>
     <None Include="AppData\PromotionDetails.json" />
     <None Include="AppData\SKUDetails.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PromotionEngine.Common\PromotionEngine.Common.csproj">
+      <Project>{B45E58BB-AA91-4889-A11E-149C7E3A5E6C}</Project>
+      <Name>PromotionEngine.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PromotionEngine.Entities\PromotionEngine.Entities.csproj">
+      <Project>{784640CA-4E40-42AD-809C-77D0EC266655}</Project>
+      <Name>PromotionEngine.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

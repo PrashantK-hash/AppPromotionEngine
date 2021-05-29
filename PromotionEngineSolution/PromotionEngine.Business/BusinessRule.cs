@@ -39,6 +39,18 @@ namespace PromotionEngine.Business
 
             return notMatchedItems;
         }
+
+        private decimal TotalValueforAppliedPromotionItem(List<ShoppingCartItem> matchedCartItem)
+        {
+            decimal totalAmout = 0;
+            return totalAmout;
+        }
+
+        private decimal TotalValueforNonAppliedPromotionItem(List<ShoppingCartItem> matchedCartItem)
+        {
+            decimal totalAmout = 0;
+            return totalAmout;
+        }
         #endregion
 
     }

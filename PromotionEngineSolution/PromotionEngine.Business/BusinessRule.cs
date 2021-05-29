@@ -22,8 +22,10 @@ namespace PromotionEngine.Business
         }
         public decimal CalculateTotalValue(ShoppingCart shoppingCart)
         {
-            
-            return 10;
+            var appliedPromotionItem = GetMatchedCartItemToPromotion(shoppingCart);
+
+            return TotalValueforAppliedPromotionItem(appliedPromotionItem) + TotalValueforNonAppliedPromotionItem(shoppingCart, appliedPromotionItem);
+
         }
 
         #region "Private Method"
@@ -46,7 +48,7 @@ namespace PromotionEngine.Business
             return totalAmout;
         }
 
-        private decimal TotalValueforNonAppliedPromotionItem(List<ShoppingCartItem> matchedCartItem)
+        private decimal TotalValueforNonAppliedPromotionItem(ShoppingCart shoppingCart, List<ShoppingCartItem> matchedCartItem)
         {
             decimal totalAmout = 0;
             return totalAmout;

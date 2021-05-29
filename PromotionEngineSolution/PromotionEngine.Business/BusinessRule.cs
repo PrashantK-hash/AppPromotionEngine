@@ -68,6 +68,32 @@ namespace PromotionEngine.Business
         private decimal TotalValueforAppliedPromotionItem(List<ShoppingCartItem> matchedCartItem)
         {
             decimal totalAmout = 0;
+
+            matchedCartItem.GroupBy(gb => gb.PromotionId).Select(x => x.Key).ToList().ForEach(m =>
+            {
+                var tempDiscount = promotionDetailsData.Where(x => x.PromotionId == m).Select(p => p.Disount).FirstOrDefault();
+                var tempPromotionType = promotionDetailsData.Where(x => x.PromotionId == m).Select(p => p.PromotionType).FirstOrDefault();
+                var tempMatchedCount = (matchedCartItem.Where(t => t.PromotionId == m)).Count();
+
+                var promotionItemCount = 0;
+
+                (promotionDetailsData.Where(x => x.PromotionId == m).ToList()).ForEach(tc =>
+                  {
+                      tc.PromotionCondition.Name.ForEach(pc =>
+                      {
+                          promotionItemCount = promotionItemCount + pc.ItemCount;
+                      });
+                  });
+
+                if (tempPromotionType == Common.PromotionType.FixedRateDiscount)
+                {
+                    totalAmout = totalAmout + (tempDiscount * (tempMatchedCount / promotionItemCount));
+                }
+                else if (tempPromotionType == Common.PromotionType.PercentageDiscount)
+                {
+                    totalAmout = totalAmout + (tempDiscount * (tempMatchedCount / promotionItemCount));
+                }
+            });
             return totalAmout;
         }
 

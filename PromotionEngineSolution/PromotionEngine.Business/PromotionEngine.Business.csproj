@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PromotionEngine.Common\PromotionEngine.Common.csproj">
+      <Project>{B45E58BB-AA91-4889-A11E-149C7E3A5E6C}</Project>
+      <Name>PromotionEngine.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PromotionEngine.DataAccess\PromotionEngine.DataAccess.csproj">
       <Project>{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}</Project>
       <Name>PromotionEngine.DataAccess</Name>

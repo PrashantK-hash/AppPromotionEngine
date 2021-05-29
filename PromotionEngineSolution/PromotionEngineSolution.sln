@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine.Business", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine.Entities", "PromotionEngine.Entities\PromotionEngine.Entities.csproj", "{784640CA-4E40-42AD-809C-77D0EC266655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine.DataAccess", "PromotionEngine.DataAccess\PromotionEngine.DataAccess.csproj", "{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{784640CA-4E40-42AD-809C-77D0EC266655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{784640CA-4E40-42AD-809C-77D0EC266655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{784640CA-4E40-42AD-809C-77D0EC266655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DF0A3B-4EDD-4010-BAFB-DDF39949FA7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

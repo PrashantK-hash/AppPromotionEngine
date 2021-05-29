@@ -32,6 +32,23 @@ namespace PromotionEngine.Business
         private List<ShoppingCartItem> GetMatchedCartItemToPromotion(ShoppingCart shoppingCart)
         {
             List<ShoppingCartItem> matchedItems = new List<ShoppingCartItem>();
+            promotionDetailsData.ForEach(sku =>
+            {
+                sku.PromotionCondition.Name.ForEach(x =>
+                {
+                    var tempMatchedItem = shoppingCart.ShoppingCartItem.Where(t => t.SKU.Name == x.Name && t.PromotionApplied == false);
+                    var takeItemCount = x.ItemCount * (tempMatchedItem.Count() / x.ItemCount);
+                    matchedItems.AddRange(tempMatchedItem.Take(takeItemCount).ToList());
+                    foreach (var matchedItem in matchedItems.Where(y=>y.PromotionId == 0))
+                    {
+                        matchedItem.PromotionId = sku.PromotionId;
+                        matchedItem.PromotionApplied = true;
+                    }
+
+                });
+                var removePromotionId = matchedItems.GroupBy(gb => gb.PromotionId).Where(r => (r.Count() % sku.PromotionCondition.Name.Count) != 0).Select(grp => grp.Key).FirstOrDefault();
+                matchedItems.RemoveAll(item => item.PromotionId == removePromotionId);
+            });
 
             return matchedItems;
         }

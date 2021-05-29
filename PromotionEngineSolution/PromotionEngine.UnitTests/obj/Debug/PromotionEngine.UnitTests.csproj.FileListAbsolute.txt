@@ -40,3 +40,5 @@ D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.Uni
 D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.UnitTests\obj\Debug\PromotionEngine.UnitTests.csproj.CopyComplete
 D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.UnitTests\obj\Debug\PromotionEngine.UnitTests.dll
 D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.UnitTests\obj\Debug\PromotionEngine.UnitTests.pdb
+D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.UnitTests\bin\Debug\AppData\PromotionDetails.json
+D:\Project_Engine\AppPromotionEngine\PromotionEngineSolution\PromotionEngine.UnitTests\bin\Debug\AppData\SKUDetails.json

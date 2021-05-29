@@ -31,9 +31,10 @@ namespace PromotionEngine.Business
         #region "Private Method"
         private List<ShoppingCartItem> GetMatchedCartItemToPromotion(ShoppingCart shoppingCart)
         {
-            List<ShoppingCartItem> matchedItems = new List<ShoppingCartItem>();
+            List<ShoppingCartItem> allMatchedItems = new List<ShoppingCartItem>();
             promotionDetailsData.ForEach(sku =>
             {
+                List<ShoppingCartItem> matchedItems = new List<ShoppingCartItem>();
                 sku.PromotionCondition.Name.ForEach(x =>
                 {
                     var tempMatchedItem = shoppingCart.ShoppingCartItem.Where(t => t.SKU.Name == x.Name && t.PromotionApplied == false);
@@ -48,19 +49,30 @@ namespace PromotionEngine.Business
                 });
                 var removePromotionId = matchedItems.GroupBy(gb => gb.PromotionId).Where(r => (r.Count() % sku.PromotionCondition.Name.Count) != 0).Select(grp => grp.Key).FirstOrDefault();
                 matchedItems.RemoveAll(item => item.PromotionId == removePromotionId);
+                allMatchedItems.AddRange(matchedItems);
             });
 
-            return matchedItems;
+            return allMatchedItems;
         }
         private List<ShoppingCartItem> GetNotMatchedCartItemToPromotion(ShoppingCart shoppingCart, List<ShoppingCartItem> matchedCartItems)
         {
             List<ShoppingCartItem> notMatchedItems = new List<ShoppingCartItem>();
-            matchedCartItems.GroupBy(gb => gb.SKU.Name).Select(x => x.Key).ToList().ForEach(m =>
+            if (matchedCartItems.Count() > 0)
             {
-                var tempMatchingData = shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m).ToList();
-                var tempCount = tempMatchingData.Count - (matchedCartItems.Where(t => t.SKU.Name == m).Count());
-                notMatchedItems.AddRange(shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m).Take(tempCount).ToList());
-            });
+                var grpSelectedList = matchedCartItems.GroupBy(gb => gb.SKU.Name).Select(x => x.Key).ToList();
+                grpSelectedList.ForEach(m =>
+                {
+                    var tempMatchingData = shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m).ToList();
+                    var tempCount = tempMatchingData.Count - (matchedCartItems.Where(t => t.SKU.Name == m).Count());
+                    notMatchedItems.AddRange(shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m & x.PromotionId == 0).Take(tempCount).ToList());
+                });
+
+                notMatchedItems.AddRange(shoppingCart.ShoppingCartItem.Where(x => grpSelectedList.All(p=>p!= x.SKU.Name)).ToList());
+            }
+            else
+            {
+                notMatchedItems.AddRange(shoppingCart.ShoppingCartItem);
+            }
 
             return notMatchedItems;
         }
@@ -71,7 +83,7 @@ namespace PromotionEngine.Business
 
             matchedCartItem.GroupBy(gb => gb.PromotionId).Select(x => x.Key).ToList().ForEach(m =>
             {
-                var tempDiscount = promotionDetailsData.Where(x => x.PromotionId == m).Select(p => p.Disount).FirstOrDefault();
+                var tempDiscount = promotionDetailsData.Where(x => x.PromotionId == m).Select(p => p.Discount).FirstOrDefault();
                 var tempPromotionType = promotionDetailsData.Where(x => x.PromotionId == m).Select(p => p.PromotionType).FirstOrDefault();
                 var tempMatchedCount = (matchedCartItem.Where(t => t.PromotionId == m)).Count();
 

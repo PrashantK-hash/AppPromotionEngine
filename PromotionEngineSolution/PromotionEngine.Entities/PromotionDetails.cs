@@ -12,7 +12,7 @@ namespace PromotionEngine.Entities
         public int PromotionId { get; set; }
         public string PromotionCode { get; set; }
         public string Description { get; set; }
-        public int Disount { get; set; }
+        public int Discount { get; set; }
         public PromotionType PromotionType { get; set; }
 
         public PromotionCondition PromotionCondition { get; set; }

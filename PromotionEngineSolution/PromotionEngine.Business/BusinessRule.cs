@@ -22,8 +22,24 @@ namespace PromotionEngine.Business
         }
         public decimal CalculateTotalValue(ShoppingCart shoppingCart)
         {
+            
             return 10;
         }
+
+        #region "Private Method"
+        private List<ShoppingCartItem> GetMatchedCartItemToPromotion(ShoppingCart shoppingCart)
+        {
+            List<ShoppingCartItem> matchedItems = new List<ShoppingCartItem>();
+
+            return matchedItems;
+        }
+        private List<ShoppingCartItem> GetNotMatchedCartItemToPromotion(ShoppingCart shoppingCart, List<ShoppingCartItem> matchedCartItems)
+        {
+            List<ShoppingCartItem> notMatchedItems = new List<ShoppingCartItem>();
+
+            return notMatchedItems;
+        }
+        #endregion
 
     }
 }

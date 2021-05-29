@@ -99,7 +99,13 @@ namespace PromotionEngine.Business
 
         private decimal TotalValueforNonAppliedPromotionItem(ShoppingCart shoppingCart, List<ShoppingCartItem> matchedCartItem)
         {
+            var notAppliedPromotionItem = GetNotMatchedCartItemToPromotion(shoppingCart, matchedCartItem);
             decimal totalAmout = 0;
+            notAppliedPromotionItem.ForEach(x =>
+            {
+                var itemPrice = SKUDetailsData.Where(y => y.Name == x.SKU.Name).Select(p => p.Price).FirstOrDefault();
+                totalAmout = totalAmout + itemPrice;
+            });
             return totalAmout;
         }
         #endregion

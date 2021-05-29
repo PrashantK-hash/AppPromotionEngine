@@ -1,0 +1,55 @@
+[
+  {
+    "PromotionId": 1,
+    "PromotionCode": "Promotion1",
+    "Description": "3 of A's for 130",
+    "Discount": 130,
+    "PromotionType": 1,
+    "PromotionCondition": {
+      "Name": [
+        {
+          "Name": "A",
+          "Price": 50,
+          "ItemCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "PromotionId": 2,
+    "PromotionCode": "Promotion2",
+    "Description": "2 of B's for 45",
+    "Discount": 45,
+    "PromotionType": 1,
+    "PromotionCondition": {
+      "Name": [
+        {
+          "Name": "B",
+          "Price": 30,
+          "ItemCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "PromotionId": 3,
+    "PromotionCode": "Promotion3",
+    "Description": "C & D for 30",
+    "Discount": 30,
+    "PromotionType": 1,
+    "PromotionCondition": {
+      "Name": [
+        {
+          "Name": "C",
+          "Price": 20,
+          "ItemCount": 1
+        },
+        {
+          "Name": "D",
+          "Price": 15,
+          "ItemCount": 1
+        }
+      ]
+    }
+  }
+]

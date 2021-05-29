@@ -55,6 +55,12 @@ namespace PromotionEngine.Business
         private List<ShoppingCartItem> GetNotMatchedCartItemToPromotion(ShoppingCart shoppingCart, List<ShoppingCartItem> matchedCartItems)
         {
             List<ShoppingCartItem> notMatchedItems = new List<ShoppingCartItem>();
+            matchedCartItems.GroupBy(gb => gb.SKU.Name).Select(x => x.Key).ToList().ForEach(m =>
+            {
+                var tempMatchingData = shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m).ToList();
+                var tempCount = tempMatchingData.Count - (matchedCartItems.Where(t => t.SKU.Name == m).Count());
+                notMatchedItems.AddRange(shoppingCart.ShoppingCartItem.Where(x => x.SKU.Name == m).Take(tempCount).ToList());
+            });
 
             return notMatchedItems;
         }

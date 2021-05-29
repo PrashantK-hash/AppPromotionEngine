@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PromotionEngine.Business;
+using PromotionEngine.Entities;
 using System;
 
 namespace PromotionEngine.UnitTests

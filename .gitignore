@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PromotionEngineSolution/PromotionEngine.Business/bin/Debug
+/PromotionEngineSolution/PromotionEngine.Business/obj/Debug
+/PromotionEngineSolution/PromotionEngine.Entities/bin/Debug
+/PromotionEngineSolution/PromotionEngine.Entities/obj/Debug
+/PromotionEngineSolution/PromotionEngine.UnitTests/bin/Debug
